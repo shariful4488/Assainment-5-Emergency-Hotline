@@ -51,3 +51,20 @@ for (let i = 0; i < callButtons.length; i++) {
 document.getElementById('history-clear-btn').addEventListener('click', function(){
     callHistory.innerHTML = '';
 })
+
+// Copy button
+
+let copyCount = 0;
+const copyButtons = document.getElementsByClassName('header button span');
+
+document.querySelectorAll('.shadow-sm button.border').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const card = btn.parentElement.parentElement;
+        const phoneNumber = card.querySelector('h2').innerText;
+
+        navigator.clipboard.writeText(phoneNumber);
+        alert(`Copied: ${phoneNumber}`);
+        copyCount += 1;
+        copyCount.innerText = copyCount;
+    });
+});
