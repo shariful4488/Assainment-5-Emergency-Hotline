@@ -55,16 +55,16 @@ document.getElementById('history-clear-btn').addEventListener('click', function(
 // Copy button
 
 let copyCount = 0;
-const copyButtons = document.getElementsByClassName('header button span');
+const copyButtons = document.querySelector('header button span');
 
 document.querySelectorAll('.shadow-sm button.border').forEach(btn => {
     btn.addEventListener('click', function() {
-        const card = btn.parentElement.parentElement;
+        const card = btn.closest('.shadow-sm');
         const phoneNumber = card.querySelector('h2').innerText;
 
         navigator.clipboard.writeText(phoneNumber);
         alert(`Copied: ${phoneNumber}`);
         copyCount += 1;
-        copyCount.innerText = copyCount;
+        copyButtons.innerText = copyCount;
     });
 });
